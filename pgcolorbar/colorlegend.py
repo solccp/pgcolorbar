@@ -38,8 +38,8 @@ def assertIsLut(lut):
     assert lut.ndim == 2, "Expected 2 dimensional LUT. Got {}D".format(lut.ndim)
     assert lut.shape[1] == 3, \
         "Second dimension of LUT should be length 3. Got: {}".format(lut.shape[1])
-    assert lut.dtype == np.uint8, \
-        "LUT should have dtype np.uint8, got {}".format(lut.dtype)
+    # assert lut.dtype == np.uint8, \
+        # "LUT should have dtype np.uint8, got {}".format(lut.dtype)
 
 
 def extentLut(lut):
@@ -179,7 +179,8 @@ class ColorLegendItem(pg.GraphicsWidget):
 
         self.setLabel(label)
         self.showHistogram(showHistogram)
-        self.setImageItem(imageItem)
+        if imageItem is not None:
+            self.setImageItem(imageItem)
 
 
     def finalize(self):
